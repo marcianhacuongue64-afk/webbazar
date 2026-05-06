@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "Roboto", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+.hero-plane {
+  background:
+    radial-gradient(circle at 78% 24%, rgb(196 58 58 / 18%), transparent 34%),
+    linear-gradient(
+      108deg,
+      rgb(255 247 246 / 96%) 0%,
+      rgb(255 247 246 / 88%) 43%,
+      rgb(255 230 226 / 20%) 68%,
+      rgb(196 58 58 / 20%) 100%
+    );
+}
+
+.dark .hero-plane {
+  background:
+    radial-gradient(circle at 78% 24%, rgb(248 113 113 / 18%), transparent 34%),
+    linear-gradient(
+      108deg,
+      rgb(19 12 13 / 98%) 0%,
+      rgb(19 12 13 / 92%) 43%,
+      rgb(73 24 24 / 34%) 70%,
+      rgb(143 41 41 / 22%) 100%
+    );
+}
+
+.motion-rise {
+  animation: rise-in 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.motion-delay-1 {
+  animation-delay: 110ms;
+}
+
+.motion-delay-2 {
+  animation-delay: 220ms;
+}
+
+.motion-delay-3 {
+  animation-delay: 330ms;
+}
+
+.motion-printer {
+  animation: printer-drift 7s ease-in-out infinite;
+}
+
+.motion-paper-feed {
+  animation: paper-feed 4.8s ease-in-out infinite;
+}
+
+.motion-status {
+  animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+.motion-paper-preview {
+  animation: receipt-hover 5.8s ease-in-out infinite;
+}
+
+.receipt-edge {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 10px),
+    96% 100%,
+    92% calc(100% - 10px),
+    88% 100%,
+    84% calc(100% - 10px),
+    80% 100%,
+    76% calc(100% - 10px),
+    72% 100%,
+    68% calc(100% - 10px),
+    64% 100%,
+    60% calc(100% - 10px),
+    56% 100%,
+    52% calc(100% - 10px),
+    48% 100%,
+    44% calc(100% - 10px),
+    40% 100%,
+    36% calc(100% - 10px),
+    32% 100%,
+    28% calc(100% - 10px),
+    24% 100%,
+    20% calc(100% - 10px),
+    16% 100%,
+    12% calc(100% - 10px),
+    8% 100%,
+    4% calc(100% - 10px),
+    0 100%
+  );
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes printer-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-10px, -12px, 0) rotate(-0.45deg);
+  }
+}
+
+@keyframes paper-feed {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(22px);
+  }
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes receipt-hover {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
